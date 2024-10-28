@@ -45,6 +45,7 @@ namespace Business.Implements.Security
             UserDto userDto = new UserDto();
 
             userDto.Id = user.Id;
+            userDto.PhotoBase64 = user.Photo != null ? Convert.ToBase64String(user.Photo) : null;
             userDto.Username = user.Username;
             userDto.Password = user.Password;
             userDto.PersonId = user.PersonId;
@@ -404,6 +405,7 @@ namespace Business.Implements.Security
                 userDto.Id = user.Id;
                 userDto.Username = user.Username;
                 userDto.Password = user.Password;
+                userDto.PhotoBase64 = user.Photo != null ? Convert.ToBase64String(user.Photo) : null;
                 userDto.PersonId = user.PersonId;
                 userDto.State = user.State;
                 if (user.roleString != null)
@@ -426,6 +428,7 @@ namespace Business.Implements.Security
                 userDto.Id = user.Id;
                 userDto.Username = user.Username;
                 userDto.Password = user.Password;
+                userDto.PhotoBase64 = user.Photo != null ? Convert.ToBase64String(user.Photo) : null;
                 userDto.PersonId = user.PersonId;
                 userDto.State = user.State;
                 if (user.roleString != null)
@@ -441,9 +444,9 @@ namespace Business.Implements.Security
         public User mapearDatos(User user, UserDto entity)
         {
             user.Id = entity.Id;
-            if (!string.IsNullOrEmpty(entity.Photo))
+            if (!string.IsNullOrEmpty(entity.PhotoBase64))
             {
-                user.Photo = Convert.FromBase64String(entity.Photo);
+                user.Photo = Convert.FromBase64String(entity.PhotoBase64);
             }
             else
             {

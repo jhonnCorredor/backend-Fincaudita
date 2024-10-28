@@ -85,7 +85,7 @@ namespace Data.Implements.Security
                             ) AS roleString
                             FROM Users AS u
                             WHERE u.DeletedAt IS NULL and u.Id = @Id 
-                            GROUP BY u.Id, u.Username, u.Password, u.PersonId, u.State
+                            GROUP BY u.Id, u.Username, u.Password, u.PersonId, u.Photo, u.State
                             ORDER BY u.Id ASC;";
             return await context.QueryFirstOrDefaultAsync<UserDto>(sql, new { Id = id });
         }
@@ -133,7 +133,7 @@ namespace Data.Implements.Security
                             ) AS roleString
                             FROM Users AS u
                             WHERE u.DeletedAt IS NULL 
-                            GROUP BY u.Id, u.Username, u.Password, u.PersonId, u.State
+                            GROUP BY u.Id, u.Username, u.Password, u.PersonId, u.Photo, u.State
                             ORDER BY u.Id ASC;";
             return await context.QueryAsync<UserDto>(sql);
         }
@@ -159,7 +159,7 @@ namespace Data.Implements.Security
                             FROM Users AS u
                             INNER JOIN UserRoles AS ur2 ON ur2.UserId = u.Id
                             WHERE u.DeletedAt IS NULL AND ur2.RoleId = @Id
-                            GROUP BY u.Id, u.Username, u.Password, u.PersonId, u.State
+                            GROUP BY u.Id, u.Username, u.Password, u.PersonId, u.Photo, u.State
                             ORDER BY u.Id ASC;";
             return await context.QueryAsync<UserDto>(sql, new {Id = id});
         }
