@@ -406,7 +406,7 @@ namespace Business.Implements.Security
                 userDto.Username = user.Username;
                 userDto.Password = user.Password;
                 userDto.PhotoBase64 = user.Photo != null ? Convert.ToBase64String(user.Photo) : null;
-                userDto.PersonId = user.PersonId;
+                userDto.PersonId = user.PersonId;   
                 userDto.State = user.State;
                 if (user.roleString != null)
                 {
